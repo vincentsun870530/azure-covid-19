@@ -23,13 +23,13 @@
 			"type": "string",
 			"defaultValue": "@{linkedService().sourceBaseURL}"
 		},
-		"tr_ingest_population_data_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/3e640eda-750e-4001-bb3a-c2382c76c1bc/resourceGroups/covid-reporting-rg/providers/Microsoft.Storage/storageAccounts/covidreportingli"
-		},
 		"ls_http_opendata_ecdc_europa_eu_fixed_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "@{linkedService().sourceBaseURL}"
+		},
+		"tr_ingest_population_data_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/3e640eda-750e-4001-bb3a-c2382c76c1bc/resourceGroups/covid-reporting-rg/providers/Microsoft.Storage/storageAccounts/covidreportingli"
 		},
 		"containerUri": {
 			"type": "string",
@@ -70,11 +70,11 @@
 					"ls_http_opendata_ecdc_euro_eu_properties_typeProperties_url": {
 						"value": "[parameters('ls_http_opendata_ecdc_euro_eu_properties_typeProperties_url')]"
 					},
-					"tr_ingest_population_data_properties_typeProperties_scope": {
-						"value": "[parameters('tr_ingest_population_data_properties_typeProperties_scope')]"
-					},
 					"ls_http_opendata_ecdc_europa_eu_fixed_properties_typeProperties_url": {
 						"value": "[parameters('ls_http_opendata_ecdc_europa_eu_fixed_properties_typeProperties_url')]"
+					},
+					"tr_ingest_population_data_properties_typeProperties_scope": {
+						"value": "[parameters('tr_ingest_population_data_properties_typeProperties_scope')]"
 					}
 				}
 			},
