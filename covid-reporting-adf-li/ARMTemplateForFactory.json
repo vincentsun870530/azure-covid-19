@@ -34,6 +34,10 @@
 		"tr_ingest_population_data_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/3e640eda-750e-4001-bb3a-c2382c76c1bc/resourceGroups/covid-reporting-rg/providers/Microsoft.Storage/storageAccounts/covidreportingli"
+		},
+		"ls_http_opendata_ecdc_europa_eu_fixed_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "@{linkedService().sourceBaseURL}"
 		}
 	},
 	"variables": {
@@ -400,8 +404,14 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "ls_http_opendata_ecdc_euro_eu",
-					"type": "LinkedServiceReference"
+					"referenceName": "ls_http_opendata_ecdc_europa_eu_fixed",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"sourceBaseURL": {
+							"value": "@dataset().baseURL",
+							"type": "Expression"
+						}
+					}
 				},
 				"parameters": {
 					"relativeURL": {
@@ -429,7 +439,7 @@
 				"schema": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_http_opendata_ecdc_euro_eu')]"
+				"[concat(variables('factoryId'), '/linkedServices/ls_http_opendata_ecdc_europa_eu_fixed')]"
 			]
 		},
 		{
@@ -590,6 +600,26 @@
 					"events": [
 						"Microsoft.Storage.BlobCreated"
 					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_http_opendata_ecdc_europa_eu_fixed')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"sourceBaseURL": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "[parameters('ls_http_opendata_ecdc_europa_eu_fixed_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Anonymous"
 				}
 			},
 			"dependsOn": []

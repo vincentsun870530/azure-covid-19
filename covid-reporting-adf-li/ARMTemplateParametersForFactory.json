@@ -25,6 +25,9 @@
 		},
 		"tr_ingest_population_data_properties_typeProperties_scope": {
 			"value": "/subscriptions/3e640eda-750e-4001-bb3a-c2382c76c1bc/resourceGroups/covid-reporting-rg/providers/Microsoft.Storage/storageAccounts/covidreportingli"
+		},
+		"ls_http_opendata_ecdc_europa_eu_fixed_properties_typeProperties_url": {
+			"value": "@{linkedService().sourceBaseURL}"
 		}
 	}
 }
