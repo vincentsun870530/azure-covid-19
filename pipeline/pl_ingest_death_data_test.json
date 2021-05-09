@@ -1,20 +1,63 @@
 {
-	"name": "pl_http_ingest_population_data_test",
+	"name": "pl_ingest_death_data_test",
 	"properties": {
 		"activities": [
 			{
-				"name": "Check if file exsits",
-				"type": "Validation",
+				"name": "Copy Cases Deaths Data",
+				"type": "Copy",
 				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataset": {
-						"referenceName": "ds_population_raw_gz",
-						"type": "DatasetReference"
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
 					},
-					"timeout": "0.00:00:20",
-					"sleep": 10
-				}
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_case_deaths_raw_csv_http",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_cases_deaths_raw_csv_dl",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"concurrency": 1,
