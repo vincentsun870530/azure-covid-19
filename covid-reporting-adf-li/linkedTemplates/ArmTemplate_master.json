@@ -19,10 +19,6 @@
 			"type": "string",
 			"defaultValue": "https://covidreportingdlli.dfs.core.windows.net"
 		},
-		"tr_ingest_population_data_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/3e640eda-750e-4001-bb3a-c2382c76c1bc/resourceGroups/covid-reporting-rg/providers/Microsoft.Storage/storageAccounts/covidreportingli"
-		},
 		"ls_http_opendata_ecdc_euro_eu_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "@{linkedService().sourceBaseURL}"
@@ -34,6 +30,10 @@
 		"tr_ingest_hospital_admission_data_properties_pl_ingest_ecdc_data_parameters_sinkFileName": {
 			"type": "string",
 			"defaultValue": "hospital_admissions.csv"
+		},
+		"tr_ingest_population_data_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/3e640eda-750e-4001-bb3a-c2382c76c1bc/resourceGroups/covid-reporting-rg/providers/Microsoft.Storage/storageAccounts/covidreportingli"
 		},
 		"containerUri": {
 			"type": "string",
@@ -71,11 +71,11 @@
 					"ls_adls_covidreportingdl_properties_typeProperties_url": {
 						"value": "[parameters('ls_adls_covidreportingdl_properties_typeProperties_url')]"
 					},
-					"tr_ingest_population_data_properties_typeProperties_scope": {
-						"value": "[parameters('tr_ingest_population_data_properties_typeProperties_scope')]"
-					},
 					"ls_http_opendata_ecdc_euro_eu_properties_typeProperties_url": {
 						"value": "[parameters('ls_http_opendata_ecdc_euro_eu_properties_typeProperties_url')]"
+					},
+					"tr_ingest_population_data_properties_typeProperties_scope": {
+						"value": "[parameters('tr_ingest_population_data_properties_typeProperties_scope')]"
 					},
 					"tr_ingest_hospital_admission_data_properties_pl_ingest_ecdc_data_parameters_sourceRelativeURL": {
 						"value": "[parameters('tr_ingest_hospital_admission_data_properties_pl_ingest_ecdc_data_parameters_sourceRelativeURL')]"
