@@ -536,8 +536,8 @@
 					"recurrence": {
 						"frequency": "Day",
 						"interval": 1,
-						"startTime": "2021-05-08T21:20:00Z",
-						"timeZone": "UTC",
+						"startTime": "2021-05-08T21:24:00",
+						"timeZone": "Eastern Standard Time",
 						"schedule": {}
 					}
 				}
